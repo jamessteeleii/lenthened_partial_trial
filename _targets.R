@@ -40,11 +40,16 @@ list(
   tar_target(prior_ma_reliability_data, here("data","prior_ma_reliability.csv"), format = "file"),
   
   # Run sample size simulations for power
-  tar_target(sim, sample_size_simulation(prior_studies_data,prior_ma_reliability_data)),
+  tar_target(sim_constant_effect, sample_size_simulation(prior_studies_data,prior_ma_reliability_data)),
+  tar_target(sim_var_effect, sample_size_simulation_var_effect(prior_studies_data,prior_ma_reliability_data)),
+  
   
   # Plot sample size simulations
-  tar_target(plot_sim, plot_sample_size_estimates(sim)),
-  tar_target(plot_sim_png, ggsave(plot = plot_sim, filename = "plot_sim.png", device = "png", dpi = 300, w = 10, h = 5))
+  tar_target(plot_sim_constant_effect, plot_sample_size_estimates(sim_constant_effect)),
+  tar_target(plot_sim_constant_effect_png, ggsave(plot = plot_sim_constant_effect, filename = "plot_sim_constant_effect.png", device = "png", dpi = 300, w = 10, h = 5)),
+  tar_target(plot_sim_var_effect, plot_sample_size_estimates_var_effect(sim_var_effect)),
+  tar_target(plot_sim_var_effect_png, ggsave(plot = plot_sim_var_effect, filename = "plot_sim_var_effect.png", device = "png", dpi = 300, w = 10, h = 5))
+  
   
   
 
