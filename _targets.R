@@ -1,8 +1,10 @@
 # _targets.R file
 library(targets)
 library(tarchetypes)
+library(crew)
 source("R/functions.R")
 tar_option_set(
+  controller = crew_controller_local(workers = 2),
   packages = c(
     "here",
     # "readxl",
@@ -15,14 +17,14 @@ tar_option_set(
     "furrr",
     # "scales",
     # "ggtext",
-    # "ggh4x",
+    "ggh4x",
     # "zoo",
     # "performance",
     # "see",
     # "rstan",
     # "brms",
     # "bayesplot",
-    # "marginaleffects",
+    "marginaleffects",
     "broom.mixed"
     # "patchwork",
     # "kableExtra",
@@ -46,9 +48,9 @@ list(
   
   # Plot sample size simulations
   tar_target(plot_sim_constant_effect, plot_sample_size_estimates(sim_constant_effect)),
-  tar_target(plot_sim_constant_effect_png, ggsave(plot = plot_sim_constant_effect, filename = "plot_sim_constant_effect.png", device = "png", dpi = 300, w = 10, h = 5)),
+  tar_target(plot_sim_constant_effect_png, ggsave(plot = plot_sim_constant_effect, filename = "sample_estimates/plot_sim_constant_effect.png", device = "png", dpi = 300, w = 10, h = 5)),
   tar_target(plot_sim_var_effect, plot_sample_size_estimates_var_effect(sim_var_effect)),
-  tar_target(plot_sim_var_effect_png, ggsave(plot = plot_sim_var_effect, filename = "plot_sim_var_effect.png", device = "png", dpi = 300, w = 10, h = 5))
+  tar_target(plot_sim_var_effect_png, ggsave(plot = plot_sim_var_effect, filename = "sample_estimates/plot_sim_var_effect.png", device = "png", dpi = 300, w = 10, h = 10))
   
   
   
