@@ -11,6 +11,7 @@ tar_option_set(
     # "janitor",
     "tidyverse",
     "base",
+    "metafor",
     "lme4",
     "lmerTest",
     "faux",
@@ -37,6 +38,26 @@ tar_option_set(
 
 
 list(
+  # Load and prepare data from previous meta-analysis
+  tar_target(MA_data_file, here("data","Polito et al. RT Extracted Data.csv"), format = "file"),
+  tar_target(MA_data, get_prepare_MA_data(MA_data_file)),
+  
+  # Fit and plot log growth MA model for hypertrophy
+  tar_target(MA_model, log_growth_MA_model(MA_data)),
+  tar_target(MA_plot, plot_log_growth_MA_model(MA_model,MA_data)),
+  tar_target(
+    MA_plot_png,
+    ggsave(
+      plot = MA_plot,
+      filename = "sample_estimates/MA_plot.png",
+      device = "png",
+      dpi = 300,
+      w = 10,
+      h = 5
+    )
+  ),
+  
+  
   # Load in data for sample simulations
   tar_target(prior_studies_data, here("data","prior_studies_data.csv"), format = "file"),
   tar_target(prior_ma_reliability_data, here("data","prior_ma_reliability.csv"), format = "file"),
@@ -44,53 +65,44 @@ list(
   # Run sample size simulations for power
   tar_target(sim_constant_effect, sample_size_simulation(prior_studies_data,prior_ma_reliability_data)),
   tar_target(sim_var_effect, sample_size_simulation_var_effect(prior_studies_data,prior_ma_reliability_data)),
-  
+  tar_target(sim_est_numbers, sample_size_simulation_est_numbers(prior_studies_data,prior_ma_reliability_data)),
   
   # Plot sample size simulations
   tar_target(plot_sim_constant_effect, plot_sample_size_estimates(sim_constant_effect)),
-  tar_target(plot_sim_constant_effect_png, ggsave(plot = plot_sim_constant_effect, filename = "sample_estimates/plot_sim_constant_effect.png", device = "png", dpi = 300, w = 10, h = 5)),
+  tar_target(
+    plot_sim_constant_effect_png,
+    ggsave(
+      plot = plot_sim_constant_effect,
+      filename = "sample_estimates/plot_sim_constant_effect.png",
+      device = "png",
+      dpi = 300,
+      w = 10,
+      h = 5
+    )
+  ),
   tar_target(plot_sim_var_effect, plot_sample_size_estimates_var_effect(sim_var_effect)),
-  tar_target(plot_sim_var_effect_png, ggsave(plot = plot_sim_var_effect, filename = "sample_estimates/plot_sim_var_effect.png", device = "png", dpi = 300, w = 10, h = 10))
+  tar_target(
+    plot_sim_var_effect_png,
+    ggsave(
+      plot = plot_sim_var_effect,
+      filename = "sample_estimates/plot_sim_var_effect.png",
+      device = "png",
+      dpi = 300,
+      w = 10,
+      h = 10
+    )
+  ),
+  tar_target(plot_sim_est_numbers, plot_sample_size_estimates_est_numbers(sim_est_numbers)),
+  tar_target(
+    plot_sim_est_numbers_png,
+    ggsave(
+      plot = plot_sim_est_numbers,
+      filename = "sample_estimates/plot_sim_est_numbers.png",
+      device = "png",
+      dpi = 300,
+      w = 10,
+      h = 10
+    )
+  )
   
-  
-  
-
-  # # Fit model
-  # tar_target(model, fit_model(data)),
-  # tar_target(tidy_model, get_tidy_model(model)),
-  # 
-  # # Model checks
-  # tar_target(model_checks, make_model_checks_tiff(model)),
-  # 
-  # # # Diagnostic plots
-  # tar_target(rhat_model, make_rhat_plot(model)),
-  # tar_target(trace_model, make_trace_plots(model)),
-  # tar_target(pp_check_model, make_pp_check(model)),
-  # 
-  # # Calculate thresholds and their agreement
-  # tar_target(thresholds, calculate_thresholds(data)),
-  # tar_target(thresholds_agree, calculate_thresholds_agree(thresholds)),
-  # 
-  # # Make and save plots
-  # tar_target(individual_data_plot, plot_individual_data(data)),
-  # tar_target(individual_data_plot_tiff, make_individual_data_plot_tiff(individual_data_plot)),
-  # 
-  # tar_target(model_plot, plot_model(data, model)),
-  # tar_target(model_plot_tiff, make_model_plot_tiff(model_plot)),
-  # 
-  # tar_target(individual_preds_plot, plot_individual_preds(data, model)),
-  # tar_target(individual_preds_plot_tiff, make_individual_preds_plot_tiff(individual_preds_plot)),
-  # 
-  # tar_target(main_plot, combine_plots(individual_data_plot, individual_preds_plot, model_plot, thresholds_agree_plot)),
-  # 
-  # tar_target(thresholds_agree_plot, plot_thresholds_agree(thresholds, thresholds_agree)),
-  # tar_target(thresholds_agree_plot_tiff, make_thresholds_agree_plot_tiff(thresholds_agree_plot))
-
-  # Render the report
-  # tar_quarto(report, "report.qmd")
-
-  # # Render the supplementary material
-  # tar_quarto(diagnostics_plots, "diagnostics_plots.qmd")
-
-
 )
