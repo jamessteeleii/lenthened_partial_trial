@@ -313,7 +313,10 @@ plot_sample_size_estimates <- function(sim) {
     mutate(test = case_when(test == "p.value" ~ "Difference",
                             test == "p.value.nonsup" ~ "Non-superiority")) |>
     group_by(measurements_n, participant_n, time_n, test) |>
-    summarise(power = mean(p.value < .025),
+    summarise(total = sum(p.value < .005),
+              power = mean(p.value < .005),
+              ci.lower = prop.test(total, 2000)$conf.int[1],
+              ci.upper = prop.test(total, 2000)$conf.int[2],
               .groups = "drop") |>
     ggplot(aes(x = participant_n, y = power, color = factor(measurements_n))) +
     geom_hline(yintercept = 0.95, linetype = "dashed") +
@@ -470,7 +473,10 @@ plot_sample_size_estimates_var_effect <- function(sim) {
     mutate(test = case_when(test == "p.value" ~ "Difference",
                             test == "p.value.nonsup" ~ "Non-superiority")) |>
     group_by(measurements_n, participant_n, time_n, u_time, test) |> 
-    summarise(power = mean(p.value < .005), 
+    summarise(total = sum(p.value < .005),
+              power = mean(p.value < .005),
+              ci.lower = prop.test(total, 2000)$conf.int[1],
+              ci.upper = prop.test(total, 2000)$conf.int[2], 
               .groups = "drop") |>
     ggplot(aes(x = participant_n, y = power, color = factor(measurements_n))) +
     geom_hline(yintercept = 0.95, linetype = "dashed") +
@@ -637,7 +643,10 @@ plot_sample_size_estimates_est_numbers <- function(sim) {
     mutate(test = case_when(test == "p.value" ~ "Difference",
                             test == "p.value.nonsup" ~ "Non-superiority")) |>
     group_by(measurements_n, time_n, u_time, test) |> 
-    summarise(power = mean(p.value < .005), 
+    summarise(total = sum(p.value < .005),
+              power = mean(p.value < .005),
+              ci.lower = prop.test(total, 2000)$conf.int[1],
+              ci.upper = prop.test(total, 2000)$conf.int[2], 
               .groups = "drop") |>
     ggplot(aes(x = factor(measurements_n), y = power, color = factor(measurements_n))) +
     geom_hline(yintercept = 0.95, linetype = "dashed") +
