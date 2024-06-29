@@ -269,7 +269,7 @@ sample_size_simulation <- function(file1, file2) {
     
     
     hypothesis_tests_thigh <- hypotheses(model_thigh, equivalence = c(NA,0.1), vcov = "satterthwaite", df = insight::get_df(model_thigh))[4,] |>
-      mutate(muscle_site = "arm")
+      mutate(muscle_site = "thigh")
     
     bind_rows(hypothesis_tests_arm, hypothesis_tests_thigh)
   }
@@ -417,7 +417,7 @@ sample_size_simulation_var_effect  <- function(file1, file2) {
     
     
     hypothesis_tests_thigh <- hypotheses(model_thigh, equivalence = c(NA,0.1), vcov = "satterthwaite", df = insight::get_df(model_thigh))[4,] |>
-      mutate(muscle_site = "arm")
+      mutate(muscle_site = "thigh")
     
     bind_rows(hypothesis_tests_arm, hypothesis_tests_thigh)
   }
@@ -588,7 +588,7 @@ sample_size_simulation_est_numbers <- function(file1, file2) {
     
     
     hypothesis_tests_thigh <- hypotheses(model_thigh, equivalence = c(NA,0.1), vcov = "satterthwaite", df = insight::get_df(model_thigh))[4,] |>
-      mutate(muscle_site = "arm")
+      mutate(muscle_site = "thigh")
     
     bind_rows(hypothesis_tests_arm, hypothesis_tests_thigh)
   }

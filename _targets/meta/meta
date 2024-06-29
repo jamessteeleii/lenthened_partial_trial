@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|ac92e22a8bc2938e|||||||||||||||
+.Random.seed|object|e23f522bfd53545e|||||||||||||||
 get_prepare_MA_data|function|5fbdec27d928ef67|||||||||||||||
 log_growth_MA_model|function|a5aacbba7a1f5219|||||||||||||||
 MA_data|stem|2a4e92bba802e826|fac23e894c0a4f6e|7705a21e08e86cd1|-342692849||t19898.3098632248s|1e37b7ff6ba5f78e|18607|rds|local|vector|||31.266|Some yi andor vi values equal to Inf. Recoded to NAs.. 492 rows with NAs omitted from model fitting.. Cannot estimate the sampling variance when ni  3.. Some yi andor vi values equal to Inf. Recoded to NAs.. 980 rows with NAs omitted from model fitting.|
@@ -12,20 +12,17 @@ plot_log_growth_MA_model|function|b04765693da219e9|||||||||||||||
 plot_sample_size_estimates|function|94515644612b1c71|||||||||||||||
 plot_sample_size_estimates_est_numbers|function|f556db1842f386db|||||||||||||||
 plot_sample_size_estimates_var_effect|function|688f69a2f8ffea03|||||||||||||||
-plot_sim|stem|3aff7d3e5acd5c8d|9974e742f42b63d4|c56e09389f7147ce|1539022281||t19805.4369066661s|0e6347be1a827afa|54078410|rds|local|vector|||0.28||
-plot_sim_constant_effect|stem|e491b8c7d612c277|be61cd29cd39237b|cb91c7046fc040fc|-377813069||t19902.2700984465s|e381feae9537cff7|16717340|rds|local|vector|||2.453||
-plot_sim_constant_effect_png|stem|dba51c5c4b2f4bc9|6a4d92e8af3d5aca|469e9c999b7a65ed|-1839816477||t19902.2701320645s|2005da2f14a67e22|98|rds|local|vector|||0.578||
-plot_sim_est_numbers|stem|dc29f058bacd098c|c28144f01518f589|2e169fe8955e0d31|1378253223||t19902.2701364329s|f5e2af02c09c1b5a|1887442|rds|local|vector|||0.078||
-plot_sim_est_numbers_png|stem|d3eabfe928108595|d54220002b78790f|c5f5fef5c2c58a16|-883243496||t19902.2701508188s|8fcb0666863d3c08|92|rds|local|vector|||1.031||
-plot_sim_png|stem|a462349904034fb7|f2da26dfdf7e2b35|682278c0bb41526c|-2051937911||t19805.4369127207s|1d635f53cb385f1d|65|rds|local|vector|||0.45||
-plot_sim_var_effect|stem|95c4f15aa3b9446b|9d2ab9ea55972067|e0fc1b5b9249c7e6|529689386||t19902.2701269161s|0f6bd04cc2cc04c6|33367296|rds|local|vector|||3.094||
-plot_sim_var_effect_png|stem|fc65f3bac8eb8b2b|5c054ed929bc31f8|ea2c41d0e43350cd|956062358||t19902.2701505987s|17e1813002340629|93|rds|local|vector|||0.766||
+plot_sim_constant_effect|stem|d1c24a9d6e97d8bf|be61cd29cd39237b|fca0242860a3d97f|-377813069||t19903.4982049941s|b3aa25452b34613f|16719450|rds|local|vector|||1.797||
+plot_sim_constant_effect_png|stem|dba51c5c4b2f4bc9|6a4d92e8af3d5aca|5df57e7a5a1f27e0|-1839816477||t19903.4982374203s|2005da2f14a67e22|98|rds|local|vector|||1.938||
+plot_sim_est_numbers|stem|6b1d2e62a7aec331|c28144f01518f589|0154eb25d2f9ba0d|1378253223||t19903.3043856495s|cdde85fa53a6456f|1887757|rds|local|vector|||0.453||
+plot_sim_est_numbers_png|stem|d3eabfe928108595|d54220002b78790f|e7fb7fc221cf37ee|-883243496||t19903.3044138074s|8fcb0666863d3c08|92|rds|local|vector|||2.297||
+plot_sim_var_effect|stem|aec927336ced6a8b|9d2ab9ea55972067|1b1ec7309f8ae78f|529689386||t19903.6037554267s|7105685e93f607a7|33371562|rds|local|vector|||1.609||
+plot_sim_var_effect_png|stem|fc65f3bac8eb8b2b|5c054ed929bc31f8|755d7cf3ac46167c|956062358||t19903.6037782449s|17e1813002340629|93|rds|local|vector|||0.766||
 prior_ma_reliability_data|stem|8b83d73a9ddd260e|87ac959f69689e98|ef46db3751d8e999|-1019939638|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/prior_ma_reliability.csv|t19805.2940963057s|946351cd736e2171|2626|file|local|vector|||0.01||
 prior_studies_data|stem|d5f51881970b22df|5171ef5c6b4b33e8|ef46db3751d8e999|2146339452|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/prior_studies_data.csv|t19804.5348638165s|55fe4d339b6caa00|7623|file|local|vector|||1.92||
-sample_size_simulation|function|d222503d5d055544|||||||||||||||
-sample_size_simulation_est_numbers|function|5dfe4174f7cb7632|||||||||||||||
-sample_size_simulation_var_effect|function|1d5f377e6c559be4|||||||||||||||
-sim|stem|c5d998ed9b8c9e64|fc9412bbdc846b7b|10996cecd3ab622c|220449508||t19805.3990463076s|86ba1d03294040bf|53925485|rds|local|vector|||3883.14|There were 4278 warnings in mutate.The first warning wasℹ In argument analysis  future_pmap., sim.Caused by warning Model failed to converge with 1 negative eigenvalue 1.3e01ℹ Run dplyrlast_dplyr_warnings to see the 4277 remaining warnings.|
-sim_constant_effect|stem|0399fcf00b85f31f|fc9412bbdc846b7b|0ea5eadbbd8bc6bc|689004179||t19818.8342261157s|4d3ba9fd888fe603|16550686|rds|local|vector|||8652.328|1m22mThere were 22943 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning in checkConv33m39m Model failed to converge with maxgrad  0.0034959 tol  0.002, component 11m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 22942 remaining warnings.|
-sim_est_numbers|stem|a103dbf247bfbc5b|f632ee2696d5724d|f6a3330ef71c44be|1864559989||t19900.2844570757s|05a933121d0e4eac|1659533|rds|local|vector|||457.688|1m22mThere were 1717 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 4.8e011m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 1716 remaining warnings.|
-sim_var_effect|stem|9d223cf6085b782e|0d2a231f8e36a76b|9192f6eb6b46b036|-415705105||t19818.7101597926s|1b3b2b3ec9e800d5|33106351|rds|local|vector|||19698.062|1m22mThere were 34813 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 2.3e011m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 34812 remaining warnings.|
+sample_size_simulation|function|50825667978581ed|||||||||||||||
+sample_size_simulation_est_numbers|function|a6c417b1d1b487f3|||||||||||||||
+sample_size_simulation_var_effect|function|7a5b2680392d502a|||||||||||||||
+sim_constant_effect|stem|ae8fe9b20ba75b0c|fc9412bbdc846b7b|9cf0d3ccccbf3559|689004179||t19903.498154254s|798597e532ffd581|16552685|rds|local|vector|||13001.922|1m22mThere were 22596 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 9.1e001m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 22595 remaining warnings.|
+sim_est_numbers|stem|2460d82259aae80d|f632ee2696d5724d|6ea7e86738ee3efc|1864559989||t19903.3043769394s|57ee74440ec45c32|1659827|rds|local|vector|||641.391|1m22mThere were 1651 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning in checkConv33m39m unable to evaluate scaled gradient1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 1650 remaining warnings.|
+sim_var_effect|stem|9534ae454a306d54|0d2a231f8e36a76b|b686351bd58b7420|-415705105||t19903.6036946016s|fe6ac6bea2ecc1a3|33109937|rds|local|vector|||22119.922|1m22mThere were 34989 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 2.0e011m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 34988 remaining warnings.|
