@@ -1,14 +1,37 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|e23f522bfd53545e|||||||||||||||
+.Random.seed|object|e3e361c768657109|||||||||||||||
+calculate_wolf_effect_sizes|function|86b82a4ba1f283aa|||||||||||||||
+data_exploratory_hypertrophy_ready|stem||b420bd53ca0fdfd9|ef46db3751d8e999|1701341672||t20056.7765048078s||0|rds|local|vector|||2.766||could not find function prepare_exploratory_hypertrophy_data
+data_explore_hypertrophy_ready|stem|174e7f313967bd14|6f448b248d40f633|2fa5444b1c93e17a|1336314605||t20056.777615632s|e17b038ffdb3bf7c|28630|rds|local|vector|||1.875||
+data_hypertrophy|stem|a99c567d4f96d6fd|6882a5da6585ce16|c4391ffe30eae063|1734454187||t20052.6278782916s|6ea85fc264ad00cf|20167|rds|local|vector|||0.532||
+data_hypertrophy_ready|stem|c91e1bc40720a018|f207dbc0c97c1ca2|438e88ef77a49db7|524964357||t20052.6278797536s|23550363213afeb0|19791|rds|local|vector|||0.094||
+data_strength|stem|caca1d2e3c4df622|e0dad7c4ded42c24|fac65d54801a9ec9|137520997||t20052.6278780703s|30d6489c0b5859b7|115684|rds|local|vector|||0.5||
+data_strength_ready|stem|1a90c6fbf73515b6|c9ed16ad990f1676|734f5478b4efe00a|-985021573||t20056.8518440458s|faec407ed75e50f9|124629|rds|local|vector|||1.844||
+file_data_hypertrophy|stem|ba9af6292ba13f73|4ee6b6fb4887bddf|ef46db3751d8e999|826527313|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/PD_data_hypertrophy.csv|t20052.3337851649s|d2fcbffce34a8932|67131|file|local|vector|||1.969||
+file_data_strength|stem|9dc89c841dcd6ceb|a1d0bf37e65a6822|ef46db3751d8e999|-1101608276|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/PD_data_strength.csv|t20050.6776717571s|09737520e3a7c5d3|1086500|file|local|vector|||1.969||
+fit_explore_hypertrophy_models|function|32e4fcbbd854c1c2|||||||||||||||
+fit_hypertrophy_models|function|e4d68879492c77c6|||||||||||||||
+fit_strength_models|function|673bf3fd690e4e5a|||||||||||||||
 get_prepare_MA_data|function|5fbdec27d928ef67|||||||||||||||
+get_prepare_MA_data_strength|function|3335ee803c50b0f5|||||||||||||||
+grateful_report|stem|a6b6a24fb16e5580|8367b839dda20448|ef46db3751d8e999|1345217321||t20059.4530663669s|0b52c5847220add9|82|rds|local|vector|||5.453||
 log_growth_MA_model|function|a5aacbba7a1f5219|||||||||||||||
+log_growth_MA_model_strength|function|dbefb0ae81ca63ec|||||||||||||||
 MA_data|stem|2a4e92bba802e826|fac23e894c0a4f6e|7705a21e08e86cd1|-342692849||t19898.3098632248s|1e37b7ff6ba5f78e|18607|rds|local|vector|||31.266|Some yi andor vi values equal to Inf. Recoded to NAs.. 492 rows with NAs omitted from model fitting.. Cannot estimate the sampling variance when ni  3.. Some yi andor vi values equal to Inf. Recoded to NAs.. 980 rows with NAs omitted from model fitting.|
 MA_data_file|stem|e4fd3106eec431d7|f1c775a72e811ee5|ef46db3751d8e999|-786354222|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/Polito et al. RT Extracted Data.csv|t19256.5312779865s|c7850cd15afbe11d|274840|file|local|vector|||1.782||
+MA_data_strength|stem|3df316598db71f13|2eba869c84eb71bf|977accdc40d74d18|-18664808||t20057.3552573737s|5db6a8ac49587ef5|20725|rds|local|vector|||32.672|Some yi andor vi values equal to Inf. Recoded to NAs.. 492 rows with NAs omitted from model fitting.. Cannot estimate the sampling variance when ni  3.. Some yi andor vi values equal to Inf. Recoded to NAs.. 980 rows with NAs omitted from model fitting.|
 MA_model|stem|5a8bc90cfe6c6aca|f10c8b9072ad7221|6f850d94a7d654d8|-2138737212||t19898.3110463762s|3ae0c806f1636d63|788473|rds|local|vector|||101.047||
+MA_model_strength|stem|1b14769ddc23e441|8402e369da4682be|cd7ebfd4aeb8dbe2|886870581||t20057.3566992778s|804ea9ae35721e44|771535|rds|local|vector|||123.125||
 MA_plot|stem|43c3f60d701be30d|6457f48a55a0c038|84fb12a0fe5dbf38|-620328029||t19898.3110632348s|80ec33460dd22f3e|1125240|rds|local|vector|||0.078||
 MA_plot_png|stem|5c327c7b06a36a68|0b1640418e589cd5|b1cb7ab57264670c|-536693807||t19898.3124978076s|e655bbbdcbba1d63|81|rds|local|vector|||1.922||
+MA_plot_strength|stem|6d3503acf6b150e7|cf2a5a1047a76bf1|64901ee85118a4fd|-1208002231||t20057.35672004s|c00208bb19d023b0|1145765|rds|local|vector|||0.078||
+MA_plot_strength_png|stem|028c890d911c89dd|c9003ede06589084|63ef6ef3d151c2c3|866166876||t20057.3567361827s|dff9495c51b724c1|77|rds|local|vector|||0.266||
+MA_slope|stem||19787b4bb8114b0e|a1c8ff48638a2a43|1770847604||t20056.7999896918s||0|rds|local|vector|||103.657||data must be a data.frame, environment, or list
 normalise|function|c22ce35671935e98|||||||||||||||
+plot_explore_hypertrophy_models|function|db935ebcd2edcf0f|||||||||||||||
+plot_hypertrophy_models|function|e4cffd40183b4c98|||||||||||||||
 plot_log_growth_MA_model|function|b04765693da219e9|||||||||||||||
+plot_log_growth_MA_model_strength|function|158c569f1b933a6a|||||||||||||||
 plot_sample_size_estimates|function|94515644612b1c71|||||||||||||||
 plot_sample_size_estimates_est_numbers|function|f556db1842f386db|||||||||||||||
 plot_sample_size_estimates_var_effect|function|688f69a2f8ffea03|||||||||||||||
@@ -18,11 +41,26 @@ plot_sim_est_numbers|stem|6b1d2e62a7aec331|c28144f01518f589|0154eb25d2f9ba0d|137
 plot_sim_est_numbers_png|stem|d3eabfe928108595|d54220002b78790f|e7fb7fc221cf37ee|-883243496||t19903.3044138074s|8fcb0666863d3c08|92|rds|local|vector|||2.297||
 plot_sim_var_effect|stem|aec927336ced6a8b|9d2ab9ea55972067|1b1ec7309f8ae78f|529689386||t19903.6037554267s|7105685e93f607a7|33371562|rds|local|vector|||1.609||
 plot_sim_var_effect_png|stem|fc65f3bac8eb8b2b|5c054ed929bc31f8|755d7cf3ac46167c|956062358||t19903.6037782449s|17e1813002340629|93|rds|local|vector|||0.766||
+plot_strength_models|function|fa1a3203e9ef4ab7|||||||||||||||
+plots_explore_hypertrophy|stem|75768740b7fd8732|848f60ef3a42aad5|cef741e032d666ae|1584447224||t20059.4499278509s|1728bf93222c0b61|184387|rds|local|vector|||1.922||
+plots_explore_hypertrophy_tiff|stem|f08157568a69269a|7cac077232689f6b|0e8d75c90bd8356c|420172173||t20059.4499468356s|0e696b453c03de61|85|rds|local|vector|||1.563||
+plots_hypertrophy|stem|ad157eead1c27019|f157e1ecebdd0f8f|32fd443269f683e3|88238338||t20059.4499521753s|564a3b744bb32a2b|556535|rds|local|vector|||0.219|1m22mUsing size aesthetic for lines was deprecated in ggplot2 3.4.0.36mℹ39m Please use linewidth instead.|
+plots_hypertrophy_tiff|stem|002ec657087df9d7|0727af145c2a96aa|8e84de3bc00d01b4|836259834||t20059.4499802735s|c852eab37a726e04|78|rds|local|vector|||2.265|1m22mRemoved 180 rows containing nonfinite outside the scale rangestat_smooth.. 1m22mRemoved 26 rows containing missing values or values outside the scale rangestat_slabinterval.. 1m22mRemoved 154 rows containing missing values or values outside the scale rangestat_slabinterval.. 1m22mRemoved 171 rows containing nonfinite outside the scale rangestat_smooth.. 1m22mRemoved 19 rows containing missing values or values outside the scale rangestat_slabinterval.. 1m22mRemoved 152 rows containing missing values or values outside the scale rangestat_slabinterval.|
+plots_strength|stem|bf2e220da2bd205d|8ebb136b393a9f88|09d361f9afe4cc7e|-572342641||t20059.4499354188s|581fc1564bfc5209|1640693|rds|local|vector|||2.141|1m22mUsing size aesthetic for lines was deprecated in ggplot2 3.4.0.36mℹ39m Please use linewidth instead.|
+plots_strength_tiff|stem|049be223438499eb|e8dc995a0725371d|473c763a73feda3e|-397477271||t20059.450184814s|ff026697d66e9a9f|75|rds|local|vector|||21.172|1m22mRemoved 31 rows containing nonfinite outside the scale rangestat_smooth.. 1m22mFailed to fit group 7.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 11.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 15.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 19.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 21.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 24.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 31.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 37.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 46.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 50.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 51.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique values to support 10 knots reduce k.. 1m22mFailed to fit group 58.Caused by error in smooth.construct.cr.smooth.spec33m39m x has insufficient unique value|
+prepare_explore_hypertrophy_data|function|7e41874dffe09e76|||||||||||||||
+prepare_hypertrophy_data|function|72baccbb8f57d55c|||||||||||||||
+prepare_strength_data|function|4c1a1b4eb72519e5|||||||||||||||
 prior_ma_reliability_data|stem|8b83d73a9ddd260e|87ac959f69689e98|ef46db3751d8e999|-1019939638|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/prior_ma_reliability.csv|t19805.2940963057s|946351cd736e2171|2626|file|local|vector|||0.01||
 prior_studies_data|stem|d5f51881970b22df|5171ef5c6b4b33e8|ef46db3751d8e999|2146339452|C:/Users/james/Dropbox/Research/Discover Strength/lenthened_partial_trial/data/prior_studies_data.csv|t19804.5348638165s|55fe4d339b6caa00|7623|file|local|vector|||1.92||
+refit_MA_model|function|78f447b8542db770|||||||||||||||
+results_explore_hypertrophy|stem|58cd82b2785922d3|ff701433d901b6a3|709740f5b1734621|113269326||t20056.7776204024s|b32d4cc9abeedb18|888|rds|local|vector|||0.375||
+results_hypertrophy|stem|689cf6f84e59677a|93509d8079bee82d|ce4904f2cb12c0ce|-1794464058||t20053.6867293956s|aa38c1f390789700|1089|rds|local|vector|||2.219||
+results_strength|stem|f6f3ac3e66bcfb5e|3675e4e25731cde6|7c282c526a043e35|723703747||t20056.8518966038s|3a938522d110c451|1078|rds|local|vector|||4.5|Model failed to converge with maxgrad  0.00344648 tol  0.002, component 1. Model failed to converge with 1 negative eigenvalue 1.6e01|
 sample_size_simulation|function|50825667978581ed|||||||||||||||
 sample_size_simulation_est_numbers|function|a6c417b1d1b487f3|||||||||||||||
 sample_size_simulation_var_effect|function|7a5b2680392d502a|||||||||||||||
 sim_constant_effect|stem|ae8fe9b20ba75b0c|fc9412bbdc846b7b|9cf0d3ccccbf3559|689004179||t19903.498154254s|798597e532ffd581|16552685|rds|local|vector|||13001.922|1m22mThere were 22596 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 9.1e001m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 22595 remaining warnings.|
 sim_est_numbers|stem|2460d82259aae80d|f632ee2696d5724d|6ea7e86738ee3efc|1864559989||t19903.3043769394s|57ee74440ec45c32|1659827|rds|local|vector|||641.391|1m22mThere were 1651 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning in checkConv33m39m unable to evaluate scaled gradient1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 1650 remaining warnings.|
 sim_var_effect|stem|9534ae454a306d54|0d2a231f8e36a76b|b686351bd58b7420|-415705105||t19903.6036946016s|fe6ac6bea2ecc1a3|33109937|rds|local|vector|||22119.922|1m22mThere were 34989 warnings in mutate.The first warning was1m22m36mℹ39m In argument analysis  future_pmap., sim.Caused by warning33m39m Model failed to converge with 1 negative eigenvalue 2.0e011m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 34988 remaining warnings.|
+wolf_effect_sizes|stem|576dce85a09c45be|1136eabcd3a3ec20|c4f55c38d8b8f711|932267648||t20069.4402869126s|5088284eb8bba72c|498|rds|local|vector|||2.422||

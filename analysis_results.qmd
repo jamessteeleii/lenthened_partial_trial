@@ -1,0 +1,227 @@
+---
+title: "Analysis and Results"
+format: docx
+bibliography: 
+  references.bib
+csl: apa.csl
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+```{r}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+options(knitr.kable.NA = '')
+
+library(tidyverse)
+library(patchwork)
+library(glue)
+```
+
+# Statistical Analysis
+All code utilized for data preparation and analyses are available in either the Open Science Framework page for this project <https://osf.io/t9auy/> or the corresponding GitHub repository <https://github.com/jamessteeleii/lenthened_partial_trial>. We cite all software and packages used in the analysis pipeline using the `grateful` package [@rodriguez-sanchezGratefulFacilitateCitation2023] which can be seen here: <INSERT LINK>.
+
+## Primary Pre-registered Analysis (Hypertrophy - Arm and Thigh Estimated Muscle Cross Sectional Area)
+As noted, the project was previously pre-registered including the analysis plan, model to be employed, parameter of primary interest, and specific hypothesis relating to this. The full details of this including the derivation of our hypotheses from prior evidence and theory regarding the expected effects of resistance training upon hypertrophy are fully detailed in the pre-registration for the reader (see https://osf.io/9sgjk). Here we reiterate our primary hypothesis related to the between condition comparison of lengthened partial ROM vs. full ROM resistance training interventions on arm and thigh estimated muscle cross sectional area (CSA) over time i.e., the time-by-condition interaction, where time is pre- and post-intervention (i.e., T0 and T1) and condition is the two aforementioned interventions. We tested for the equivalence of the slopes for time of lengthened partial ROM against the full ROM comparator with a smallest effect size of interest of 0.1 SMD (see pre-registration for justification for our choice of smallest effect size of interest[^1]). Our hypothesis is thus that the lengthened partial ROM resistance training condition will produce changes over time in our primary outcome measure of estimated muscle size (measured for both arm and thigh with alpha corrections for multiple outcomes; see below) that are not larger (or smaller) than the smallest effect size of interest when compared with the full ROM resistance training intervention condition. More specifically:
+
+**H0**: The interaction effect for time (pre- and post-intervention) and condition (lengthened partial ROM or full ROM resistance training intervention) for muscle CSA will differ from the smallest effect size of interest - upper and lower bound of confidence interval for between condition effect will be outside of or include the upper or lower limits of smallest effect size of interest i.e., [-0.1,0.1].
+
+**H1**:The interaction effect for time (pre- and post-intervention) and condition (lengthened partial ROM or full ROM resistance training intervention) for muscle CSA will be equivalent to the smallest effect size of interest - upper and lower bound of confidence interval for between condition effect will be inside the upper or lower limits of smallest effect size of interest i.e., [-0.1,0.1].
+
+A linear mixed effects model was fit using the `lme4` package and using Restricted Maximum Likelihood estimation for both arm and thigh estimated muscle CSA outcomes with fixed effects for time, condition, and condition:time interaction (our estimate of interest), random intercepts for both site id and participant id, and a random slope for time within participant clusters. The model equation was as follows:
+
+$$
+\begin{aligned}
+  \operatorname{y}_{i}  &\sim N \left(\alpha_{j[i],k[i]} + \beta_{1j[i]}(\operatorname{time}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{condition}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{condition})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for participant j = 1,} \dots \text{,J} \\    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for site k = 1,} \dots \text{,K}
+\end{aligned}
+$$
+Where $\operatorname{y}_{i}$ was the estimated muscle CSA for either arm or thigh standardised following the approach of Penney [-@penneyCautionsWhenNormalizing2023] i.e., using the error term of a simple linear model including only the randomised condition predictor avoiding possible attenuation issues with using z-scores. Condition was coded as centred (i.e., fROM = -0.5; lpROM = 0.5) such that the main effect of time was interpretable as the mean effect across both conditions.
+
+Our primary test for equivalence was upon the condition:time effect i.e., $\gamma^{\beta_{1}}_{1}(\operatorname{condition})$ from our primary pre-registered model using the `marginaleffects` packages `hypotheses()` function against our SESOI of 0.1. We pre-registered an alpha of 0.01, corrected to 0.005 given we had two primary outcomes relating to the same construct (i.e., muscle hypertrophy) to draw inferences regarding equivalence. We also examined the estimated main time effect i.e., $\beta_{1j[i]}(\operatorname{time})$ in our model descriptively in terms of it's magnitude and precision, and for visualisation present the un-pooled linear predictions for each participant on the raw scale (i.e., cm$^2$) in addition to the means and 95% quantile intervals for the raw pre- and post-intervention data.
+
+[^1]: Note, we should also add that the same smallest effect size of interest was elicited by the authors of a recent meta-analysis, including JS, examining the effects of muscle length upon regional hypertrophy [@varovicRegionalHypertrophyResistance2024].
+
+## Secondary Exploratory Analyses
+### Strength
+We originally noted in our pre-registration that strength would be measured both pre- and post-intervention using an estimated 10RM from which 1RM would be predicted for the leg-press, chest-press, and pulldown machine exercises. However, as noted above, because of the utilisation of the strength portal to manage and record all workouts by Discover Strength combined with the single set protocol we were instead able to extract and model estimated 1RM from the loads and repetitions performed for all leg-press, chest-press, and pulldown machine exercises by each participant over the entire duration of the intervention periods. Approaches such as this to utilise high frequency outcome measurement have recently been recommended for resistance training research to increase statistical power considerably even in the face of possible measurement error increases with estimation methods such as submaximal load RM tests [@swintonAdequateStatisticalPower2024].
+
+A linear mixed effects model was fit using the `lme4` package and using Restricted Maximum Likelihood estimation for leg-press, chest-press, and pulldown estimated 1RM outcomes with fixed effects for time, condition, and condition:time interaction, random intercepts for site id, participant id, and exercise nested within participant id[^2] and a random slope for time within participant and exercise nested within participant clusters. The model equation was as follows:
+
+[^2]: Note, we grouped outcomes by machine type i.e., leg-press, chest-press, and pulldown, but because the specific machines differed in some cases between sites, and in some cases participants trained utilising different exercises on the machine types (e.g., leg-press performed with foot placement higher or lower), we nested the specific exercise machine ("exercise") within participant id.
+
+$$
+\begin{aligned}
+  \operatorname{y}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i]}(\operatorname{time}) + \beta_{2}(\operatorname{condition}) + \beta_{3}(\operatorname{condition}:\operatorname{time}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for exercise:participant j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for participant k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for site l = 1,} \dots \text{,L}
+\end{aligned}
+$$
+Where $\operatorname{y}_{i}$ was the estimated 1RM on each exercise for either chest press, leg press, or pulldown machines standardised following the approach of Penney [-@penneyCautionsWhenNormalizing2023]. Condition was coded as centred (i.e., fROM = -0.5; lpROM = 0.5) such that the main effect of time was interpretable as the mean effect across both conditions. In addition, time was originally in days across the intervention but in the model was scaled to a period of 84 days (i.e., 12 weeks) such that the main effect for time was interpretable as the effect over that period of time.
+
+We examined both the estimated main time effect i.e., $\beta_{1j[i],k[i]}(\operatorname{time})$, and condition:time interaction effect i.e., $\beta_{3}(\operatorname{condition:time})$, in this model descriptively in terms of their magnitude and precision, and for visualisation also present un-pooled predictions using penalised cubic spline smooths for each participant on the raw scale (i.e., kilograms) in addition to the group level predictions using penalised cubic spline smooths for each condition using raw strength data over time. 
+
+Further, we refit the linear-log robust multilevel meta-regression fit to data from Steele et al. [-@steeleMetaanalysisVariationSport2023] for hypertrophy outcomes during the planning and pre-registration of this study (see https://osf.io/7fdvq and pre-registration https://osf.io/9sgjk) to the strength outcome data in order to derive the predicted simple training effect over time for participants with at least 6 months (i.e., 24 weeks) prior training experience completing an additional 12 weeks of training i.e., the linear slope for the difference in effect size predicted when moving from 24 to 36 weeks of training time. This was so that we could compare the main effects for time against what might have been *a priori* predicted for this population where we assume a linear-log function to generate strength gains over time with exposure to resistance training.
+
+### Hypertrophy
+Lastly, our pre-registered model was deliberatively conservative in assuming random slopes for time. Further, though we took two sets of baseline measures (i.e., $\operatorname{t_{-1}}$ and $\operatorname{t_{0}}$), our pre-registration was not wholly clear in whether or not these two measurement timepoints pre-intervention were to be used. As such, our main model above has included only the $\operatorname{t_{0}}$ measurements as pre-intervention as this was what was included in the simulations for sample estimation. Further, we mistakenly included in our pre-registration the condition main effect in our model whereas the mixed effects model version of the analysis of covariance (ANCOVA) approach to analysing data from randomised controlled trial data is a more efficient estimator and better reflects the the study design due to randomisation at participant level prior to intervention exposure but after pre-intervention measurement (see Kurz [-@kurzJustUseMultilevel2022]). 
+
+Considering the relative lack of evidence for *true* inter-individual response variation to resistance training (see Steele et al. [-@steeleMetaanalysisVariationSport2023] and Robinson et al. *forthcoming* (pre-registration https://osf.io/aw5zx)) we also fit an exploratory model without random slopes or a main effect for condition, and utilising all pre-intervention measurements (i.e., both $\operatorname{t_{-1}}$ and $\operatorname{t_{0}}$), with the intention of presenting more precise estimates of potential effects, particularly for time and time:condition interactions. 
+
+A linear mixed effects model was fit using the `lme4` package and using Restricted Maximum Likelihood estimation for both arm and thigh estimated muscle CSA outcomes with fixed effects for time and condition:time interaction, and random intercepts for both site id and participant id. The model equation was as follows:
+$$
+\begin{aligned}
+  \operatorname{y}_{i}  &\sim N \left(\alpha_{j[i],k[i]} + \beta_{1}(\operatorname{time}) + \beta_{2}(\operatorname{condition} \times \operatorname{time}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for participant j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for site k = 1,} \dots \text{,K}
+\end{aligned}
+$$
+Where $\operatorname{y}_{i}$ was the estimated muscle CSA for either arm or thigh standardised following the approach of Penney [-@penneyCautionsWhenNormalizing2023] i.e., using the error term of a simple linear model including only the randomised condition predictor avoiding possible attenuation issues with using z-scores. Condition was coded as centred (i.e., fROM = -0.5; lpROM = 0.5) such that the main effect of time was interpretable as the mean effect across both conditions.
+
+We examined both the estimated main time effect i.e., $\beta_{1}(\operatorname{time})$, and condition:time interaction effect i.e., $\beta_{}(\operatorname{condition:time})$, in this model descriptively in terms of their magnitude and precision. In addition, and similarly to the exploratory strength model, we examined the linear-log robust multilevel meta-regression fit to data from Steele et al. [-@steeleMetaanalysisVariationSport2023] for hypertrophy outcomes during the planning and pre-registration of this study (see https://osf.io/7fdvq and pre-registration https://osf.io/9sgjk) in order to derive the predicted simple training effect over time for participants with at least 6 months (i.e., 24 weeks) prior training experience completing an additional 12 weeks of training i.e., the linear slope for the difference in effect size predicted when moving from 24 to 36 weeks of training time. This was so that we could compare the main effects for time against what might have been *a priori* predicted for this population where we assume a linear-log function to generate hypertrophy gains over time with exposure to resistance training.
+
+# Results 
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+#| include: false
+
+targets::tar_load(results_hypertrophy)
+targets::tar_load(results_strength)
+targets::tar_load(results_explore_hypertrophy)
+targets::tar_load(plots_hypertrophy)
+targets::tar_load(plots_strength)
+targets::tar_load(plots_explore_hypertrophy)
+```
+
+## Primary Pre-registered Results (Hypertrophy - Arm and Thigh Estimated Muscle Cross Sectional Area)
+Our primary estimand of interest was the condition:time interaction effect from our pre-registered analysis reflecting the between condition difference in change in hypertrophy over time. The estimate for this effect for the standardised arm estimated muscle CSA was `r round(results_hypertrophy$estimate[8], 3)` [95%CI: `r round(results_hypertrophy$conf.low[8], 3)`, `r round(results_hypertrophy$conf.high[8], 3)`] and for the standardised thigh estimated muscle CSA was `r round(results_hypertrophy$estimate[4], 3)` [95%CI: `r round(results_hypertrophy$conf.low[4], 3)`, `r round(results_hypertrophy$conf.high[4], 3)`]. The *p*-values for equivalence were *p*=`r scales::pvalue(results_hypertrophy$p.value.equiv[8], 0.001)` for the arm muscle, and *p*=`r scales::pvalue(results_hypertrophy$p.value.equiv[4], 0.001)` for the thigh muscle. As such, considering our inference criteria with alpha set at 0.01 and adjusted to 0.005 for multiple outcomes, we were unable to reject the null hypothesis that the condition:time interaction effect was outside of the SESOI [-0.1, 0.1]. Thus we cannot clearly make the claim that their is statistical equivalence between the two interventions in terms of their effects. The raw estimated muscle CSA pre- and post-intervention predictions from un-pooled participant level linear regression in addition to the means and 95% quantile intervals can be see in @fig-hypertrophy-plot, along with the estimates for the main effect of time and condition:time interaction effect on the standardised scale from the pre-registered model.
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+#| label: fig-hypertrophy-plot 
+#| fig-width: 6
+#| fig-height: 9
+#| fig-cap: Primary pre-registered hypertrophy outcomes. The top two panels show the raw estimated muscle CSA pre- and post-intervention predictions from un-pooled participant level linear regression in addition to the means and 95% quantile intervals. The bottom two panels show estimates and 95% confidence intervals on the standardised scale from the pre-registered model for the main effect of time and the condition:time interaction effect.
+
+plots_hypertrophy
+```
+
+
+## Secondary Exploratory Results
+### Strength
+The raw estimated 1RMs at participant and exercise level penalised cubic spline smooths, in addition to the group level, can be seen in @fig-strength-plot, along with the estimates for the main effect of time and condition:time interaction effect from the exploratory model. Strength increased with time as seen from the descriptive visualisations of the raw data and from the estimates for the main effect of time from the model, though estimates for the condition:time interaction effect did not appear to indicate any clear difference between conditions in strength gains. The estimates for the main effect of time (chest press =  `r round(results_strength$estimate[2], 3)` [95%CI: `r round(results_strength$conf.low[2], 3)`, `r round(results_strength$conf.high[2], 3)`]; leg press =  `r round(results_strength$estimate[6], 3)` [95%CI: `r round(results_strength$conf.low[6], 3)`, `r round(results_strength$conf.high[6], 3)`]; chest press =  `r round(results_strength$estimate[10], 3)` [95%CI: `r round(results_strength$conf.low[10], 3)`, `r round(results_strength$conf.high[10], 3)`]) were also fairly close to the predicted time effect taken from the linear-log robust multilevel meta-regression fit to data from Steele et al. [-@steeleMetaanalysisVariationSport2023] i.e., 0.117 [95%CI: 0.105, 0.129].
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+#| label: fig-strength-plot 
+#| fig-width: 6
+#| fig-height: 9
+#| fig-cap: Secondary strength outcomes. The top two rows of panels show the raw estimated 1RMs at participant and exercise level penalised cubic spline smooths, in addition to the group level. The bottom two panels show estimates and 95% confidence intervals on the standardised scale from the exploratory model for the main effect of time and the condition:time interaction effect.
+
+plots_strength
+```
+
+### Hypertrophy
+The estimates for the main effect of time and condition:time interaction effect from the additional exploratory multilevel ANCOVA model can be seen in @fig-explore-hypertrophy-plot. As expected the estimates from this model were far more precise than in our main pre-registered model. Though the latter pre-registered did show a main effect estimate of time that excluded zero for both arm muscle `r round(results_hypertrophy$estimate[6], 3)` [95%CI: `r round(results_hypertrophy$conf.low[6], 3)`, `r round(results_hypertrophy$conf.high[6], 3)`] and thigh muscle `r round(results_hypertrophy$estimate[2], 3)` [95%CI: `r round(results_hypertrophy$conf.low[2], 3)`, `r round(results_hypertrophy$conf.high[2], 3)`] it was not wholly clear or not whether the effects were within the SESOI for hypertrophy. However, from the multilevel ANCOVA model the estimates for time where clearly within the SESOI for both arm muscle `r round(results_explore_hypertrophy$estimate[5], 3)` [95%CI: `r round(results_explore_hypertrophy$conf.low[5], 3)`, `r round(results_explore_hypertrophy$conf.high[5], 3)`] and thigh muscle `r round(results_explore_hypertrophy$estimate[2], 3)` [95%CI: `r round(results_explore_hypertrophy$conf.low[2], 3)`, `r round(results_explore_hypertrophy$conf.high[2], 3)`] and also fairly close to the predicted time effect taken from the linear-log robust multilevel meta-regression fit to data from Steele et al. [-@steeleMetaanalysisVariationSport2023] i.e., `r round(0.0493,3)` [95%CI: `r round(0.04176119,3)`, `r round(0.05676972,3)`]. Further, with the gain in precision for the estimates in the multilevel ANCOVA model the condition:time effects were more clearly within the SESOI.
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+#| label: fig-explore-hypertrophy-plot 
+#| fig-width: 6
+#| fig-height: 4.5
+#| fig-cap: Exploratory multilevel analysis of covariance (ANCOVA) mode for hypertrophy outcomes. The two panels show estimates and 95% confidence intervals on the standardised scale from the pre-registered model for the main effect of time and the condition:time interaction effect.
+
+plots_explore_hypertrophy
+```
+
+### Hypertrophy interpretation?
+In contrast to the convention in the field to set alpha at 0.05 when performing hypothesis testing, and to subsequently perform low sample size and low statistically powered studies [@steeleMetaanalysisVariationSport2023; abtPowerPrecisionSample2020; mesquidaPublicationBiasStatistical2023], our pre-registered analysis was deliberately planned for very high power and thus a low type 2 error rate. As such we lowered our alpha to account for this [@lakensImprovingYourStatistical2022a].
+
