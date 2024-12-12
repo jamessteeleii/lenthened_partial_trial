@@ -1575,3 +1575,36 @@ calculate_wolf_effect_sizes <- function() {
            smd_ppc_higher = smd_ppc + sqrt((vi_1 + vi_2)*1.96)
     )
 }
+
+calculate_gentil_effect_sizes <- function() {
+  gentil_data <- read_csv("data/gentil_data.csv") |>
+    janitor::clean_names()
+  
+  gentil_summary <- bind_rows(
+    gentil_data |>
+      select(participant , study, cpre, cpost) |>
+      rename(pre = "cpre",
+             post = "cpost") |>
+      mutate(method = "circumference"),
+    gentil_data |>
+      select(participant , study, mtpre, mtpost) |>
+      rename(pre = "mtpre",
+             post = "mtpost") |>
+      mutate(method = "UT")
+  ) |>
+    group_by(study, method) |>
+    summarise(premean = mean(pre),
+              postmean = mean(post),
+              presd = sd(pre),
+              postsd = sd(post),
+              cor = cor(pre, post),
+              n = n())
+  
+  gentil_summary <-  escalc(measure = "SMCR",
+                            m1i = postmean, m2i = premean,
+                            sd1i = presd, 
+                            ri = cor, ni = n,
+                            data = gentil_summary
+  )
+  
+}

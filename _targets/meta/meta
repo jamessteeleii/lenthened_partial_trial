@@ -1,5 +1,6 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|e3e361c768657109|||||||||||||||
+.Random.seed|object|1615dcac6d569302|||||||||||||||
+calculate_gentil_effect_sizes|function|e552da1275efe846|||||||||||||||
 calculate_wolf_effect_sizes|function|86b82a4ba1f283aa|||||||||||||||
 data_exploratory_hypertrophy_ready|stem||b420bd53ca0fdfd9|ef46db3751d8e999|1701341672||t20056.7765048078s||0|rds|local|vector|||2.766||could not find function prepare_exploratory_hypertrophy_data
 data_explore_hypertrophy_ready|stem|174e7f313967bd14|6f448b248d40f633|2fa5444b1c93e17a|1336314605||t20056.777615632s|e17b038ffdb3bf7c|28630|rds|local|vector|||1.875||
@@ -12,6 +13,7 @@ file_data_strength|stem|9dc89c841dcd6ceb|a1d0bf37e65a6822|ef46db3751d8e999|-1101
 fit_explore_hypertrophy_models|function|32e4fcbbd854c1c2|||||||||||||||
 fit_hypertrophy_models|function|e4d68879492c77c6|||||||||||||||
 fit_strength_models|function|673bf3fd690e4e5a|||||||||||||||
+gentil_effect_sizes|stem|c201784d6cb40f21|686a5b8503228e94|50cb4f206e58985f|-479938779||t20069.557942732s|629b16896a800ec8|708|rds|local|vector|||2.422||
 get_prepare_MA_data|function|5fbdec27d928ef67|||||||||||||||
 get_prepare_MA_data_strength|function|3335ee803c50b0f5|||||||||||||||
 grateful_report|stem|a6b6a24fb16e5580|8367b839dda20448|ef46db3751d8e999|1345217321||t20059.4530663669s|0b52c5847220add9|82|rds|local|vector|||5.453||

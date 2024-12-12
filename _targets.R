@@ -247,6 +247,7 @@ list(
   
   # Manuscript
   tar_target(grateful_report, cite_packages(out.dir = "pre_print", cite.tidyverse = TRUE, out.format = "pdf")),
-  tar_target(wolf_effect_sizes, calculate_wolf_effect_sizes())
+  tar_target(wolf_effect_sizes, calculate_wolf_effect_sizes()),
+  tar_target(gentil_effect_sizes, calculate_gentil_effect_sizes())
   
 )
