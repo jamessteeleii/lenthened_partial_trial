@@ -457,7 +457,7 @@ No direct funding was received for this study. Operational costs for its deliver
 
 # Author Contributions
 
-DV conceived the idea for the paper. DV, MW, BJS conceptualized the review. DV and MW conducted the study selection, data extraction, and methodological quality assessment. JS conducted the statistical analyses. DV drafted the initial manuscript. DV, MW, BJS, JS, JG, PM contributed to writing the manuscript. All authors read and approved the final manuscript.
+LC, DG, JS, and JF conceived the idea for the project and designed the methods. LC and DG coordinated and oversaw the data collection. JS conducted the statistical analyses and produced data visualisations. JS and JF drafted the initial manuscript. LC, DG, JS, and JF contributed to writing the manuscript. All authors read and approved the final manuscript.
 
 # Competing Interests
 
